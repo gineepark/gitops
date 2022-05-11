@@ -21,16 +21,14 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v2.4.2
-    # - name: Check tag name
-    #   id
+      uses: actions/checkout@v2
 
-    # - name: Get Previous tag
-    #   id: previoustag
-    #   uses: "WyriHaximus/github-action-get-previous-tag@v1"
-    - name: Get previous tag name
-      id: previous_tag
-      run: echo "$(git describe --tags --abbrev=0)"
+    - name: Get Previous tag
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      with:
+        fallback: 1.0.0
+
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -47,7 +45,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPO }}
-        IMAGE_TAG: ${{ steps.previous_tag.outputs.tag }}
+        IMAGE_TAG: ${{ steps.previoustag.outputs.tag }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
