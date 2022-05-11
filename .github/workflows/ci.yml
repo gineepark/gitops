@@ -20,6 +20,13 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
+    - name: Tag Name
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v5.5 
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }} 
+
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -35,7 +42,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPO }}
-        IMAGE_TAG: ${{ github.run_id }}
+        IMAGE_TAG: ${{ steps.tag_version.outputs.new_tag }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
