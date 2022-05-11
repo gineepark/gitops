@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: 247563183324.dkr.ecr.ap-northeast-2.amazonaws.com/gitops
-  newTag: "2309066955"
+  newTag: bc251d95cf6bb40b08b095405b4eea04a34c30b3
 resources:
 - ../../base
