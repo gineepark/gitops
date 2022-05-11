@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/gineepark/gitops-devops.git
+    repoURL: https://github.com/gineepark/gitops-application.git
     targetRevision: HEAD
     path: overlays/dev
   destination:
