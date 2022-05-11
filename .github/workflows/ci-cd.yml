@@ -91,7 +91,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
        cd kustomize/overlays/dev/
-       kustomize edit set $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+       kustomize edit set image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
        cat kustomization.yaml
         
     - name: Commit files
