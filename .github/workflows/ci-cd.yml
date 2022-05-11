@@ -62,7 +62,7 @@ jobs:
       if: always() 
 
   deploy:
-    name: Deploy
+    name: CD
     runs-on: ubuntu-latest
     needs: build
 
