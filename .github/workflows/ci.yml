@@ -20,9 +20,9 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+    - name: Get Previous tag
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
