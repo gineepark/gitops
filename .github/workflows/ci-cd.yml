@@ -69,6 +69,10 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+      
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1.6.1
