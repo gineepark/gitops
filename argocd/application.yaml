@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/gineepark/gitops-application.git
     targetRevision: HEAD
-    path: overlays/dev
+    path: kustomize/overlays/dev
   destination:
     server: https://kubernetes.default.svc
     namespace: default
