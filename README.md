@@ -1,6 +1,9 @@
 # GitOps
  
 CI job에서 이미지를 빌드하고 컨테이너 레지스트리(ECR)에 푸시하면,
+
+<br>
+
 CD job에서 kustomize를 사용하여 최신 이미지 태그로 오버레이 하고, 다시 Github repository에 변경 내용을 푸시합니다.
 
 <br>
